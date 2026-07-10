@@ -242,6 +242,28 @@
                 box-shadow: 0 16px 40px rgba(0,0,0,0.06);
             }
 
+        /* Card hover effects */
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Badge styling */
+        .badge.bg-primary {
+            background: linear-gradient(135deg, #1a5adf, #2a6df4) !important;
+        }
+
+        /* Responsive heading */
+        @media (max-width: 576px) {
+            .text-center .fw-bolder {
+                font-size: 2rem !important;
+            }
+        }
+
         /* ---- contact section ---- */
         .contact-section {
             padding: 0;
@@ -861,39 +883,46 @@
     <section class="full-page border-bottom" id="testimonials" style="background: #f8fafc;">
         <div class="container px-4">
             <div class="text-center mb-5">
-                <h2 class="fw-bolder" style="letter-spacing: -0.02em;">Real stories from real clients</h2>
-                <p class="lead text-secondary">We partner with businesses to create impact.</p>
+                <span class="badge bg-primary text-white rounded-pill px-4 py-2 mb-3" style="font-size: 0.9rem; font-weight: 500;">
+                    <i class="fas fa-quote-left me-2"></i> Our Promise
+                </span>
+                <h2 class="fw-bolder" style="letter-spacing: -0.02em; font-size: 2.8rem;">What We <span style="color: #2a6df4;">Stand For</span></h2>
+                <p class="lead text-secondary" style="max-width: 600px; margin: 0 auto;">Every project we undertake is guided by our core values and commitment to excellence.</p>
             </div>
             <div class="row g-4 justify-content-center">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card card p-4 h-100">
-                    <div class="d-flex">
-                        <div class="flex-shrink-0"><i class="fas fa-quote-right text-primary fs-1"></i></div>
-                        <div class="ms-4">
-                            <p class="mb-1">"We believe in delivering exceptional digital solutions that help businesses grow and succeed in the online space."</p>
-                            <div class="small text-muted mt-2">— Our Mission</div>
+                <!-- Card 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card card p-4 h-100" style="border-left: 4px solid #2a6df4; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="fas fa-quote-right text-primary fs-1" style="opacity: 0.3;"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1" style="font-style: italic; font-size: 1.05rem;">"We believe in delivering exceptional digital solutions that help businesses grow and succeed in the online space."</p>
+                                <div class="small text-muted mt-2"><i class="fas fa-bullseye text-primary me-1"></i> Our Mission</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card card p-4 h-100">
-                    <div class="d-flex">
-                        <div class="flex-shrink-0"><i class="fas fa-quote-right text-primary fs-1"></i></div>
-                        <div class="ms-4">
-                            <p class="mb-1">"Quality, innovation, and customer satisfaction are at the heart of everything we do. We build websites that make a difference."</p>
-                            <div class="small text-muted mt-2">— Our Values</div>
+                <!-- Card 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card card p-4 h-100" style="border-left: 4px solid #2a6df4; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="fas fa-quote-right text-primary fs-1" style="opacity: 0.3;"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1" style="font-style: italic; font-size: 1.05rem;">"Quality, innovation, and customer satisfaction are at the heart of everything we do. We build websites that make a difference."</p>
+                                <div class="small text-muted mt-2"><i class="fas fa-heart text-primary me-1"></i> Our Values</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card card p-4 h-100">
-                    <div class="d-flex">
-                        <div class="flex-shrink-0"><i class="fas fa-quote-right text-primary fs-1"></i></div>
-                        <div class="ms-4">
-                            <p class="mb-1">"From concept to launch, we work closely with our clients to create websites that are both beautiful and functional."</p>
-                            <div class="small text-muted mt-2">— Our Approach</div>
+                <!-- Card 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card card p-4 h-100" style="border-left: 4px solid #2a6df4; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="fas fa-quote-right text-primary fs-1" style="opacity: 0.3;"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1" style="font-style: italic; font-size: 1.05rem;">"From concept to launch, we work closely with our clients to create websites that are both beautiful and functional."</p>
+                                <div class="small text-muted mt-2"><i class="fas fa-lightbulb text-primary me-1"></i> Our Approach</div>
+                            </div>
                         </div>
                     </div>
                 </div>
