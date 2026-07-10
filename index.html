@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Marlani - modern business solutions, web development, and digital presence." />
+    <title>Marlani · Business Elevated</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        /* ---- reset & base ---- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            scroll-behavior: smooth;
+        }
+
+        /* each section = full viewport height, centered content */
+        .full-page {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ---- navbar (fixed) ---- */
+        .navbar {
+            background: rgb(0, 57, 134);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1050;
+        }
+
+        .navbar-logo {
+            height: 44px;
+            width: auto;
+            transition: transform 0.2s;
+        }
+
+            .navbar-logo:hover {
+                transform: scale(1.02);
+            }
+
+        .navbar .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+            .navbar .nav-link:hover {
+                background: rgba(255,255,255,0.1);
+                color: #fff !important;
+            }
+
+            .navbar .nav-link.active {
+                background: rgba(255,255,255,0.15);
+                color: #fff !important;
+            }
+
+        /* ---- HEADER (full page) ---- */
+        .header {
+            background: linear-gradient(135deg, #0b1e33 0%, #1a2f44 100%);
+            margin-top: 0;
+        }
+
+            .header::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: url('assets/img/company_hero.png') no-repeat center/cover;
+                opacity: 0.3;
+                pointer-events: none;
+            }
+
+            .header h1 {
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            }
+
+            .header .lead {
+                font-weight: 400;
+                text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+
+        .btn-primary {
+            background: #2a6df4;
+            border: none;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 60px;
+            box-shadow: 0 8px 24px rgba(42, 109, 244, 0.35);
+            transition: all 0.25s;
+        }
+
+            .btn-primary:hover {
+                background: #1a5adf;
+                transform: translateY(-2px);
+                box-shadow: 0 12px 32px rgba(42, 109, 244, 0.45);
+            }
+
+        .btn-outline-light {
+            border-radius: 60px;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            border-width: 2px;
+        }
+
+            .btn-outline-light:hover {
+                background: rgba(255,255,255,0.1);
+                border-color: #fff;
+            }
+
+        /* ---- features (full page) ---- */
+        .feature-icon {
+            font-size: 2.4rem;
+            background: #eef4ff;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            color: #1a5adf;
+            transition: all 0.2s;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem 1.5rem;
+            height: 100%;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+            transition: transform 0.25s, box-shadow 0.3s;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+            .feature-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 24px 48px rgba(0,20,50,0.08);
+            }
+
+        .img-placeholder {
+            background: #eef4ff;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a5adf;
+            font-weight: 500;
+            padding: 1.2rem 0.8rem;
+            min-height: 70px;
+        }
+
+            .img-placeholder i {
+                font-size: 2.4rem;
+                margin-right: 0.6rem;
+            }
+
+        /* ---- pricing (full page) ---- */
+        .pricing-section {
+            background: linear-gradient(145deg, #0e2238, #162b44);
+        }
+
+            .pricing-section .card {
+                border: none;
+                border-radius: 32px;
+                overflow: hidden;
+                transition: transform 0.25s, box-shadow 0.3s;
+                box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+                backdrop-filter: blur(2px);
+                background: rgba(255,255,255,0.98);
+            }
+
+                .pricing-section .card:hover {
+                    transform: translateY(-8px);
+                    box-shadow: 0 32px 60px rgba(0,0,0,0.35);
+                }
+
+            .pricing-section .card-body {
+                padding: 2rem 1.8rem !important;
+            }
+
+            .pricing-section .display-4 {
+                font-weight: 700;
+                letter-spacing: -0.02em;
+            }
+
+            .pricing-section .btn-outline-primary {
+                border-radius: 60px;
+                border-width: 2px;
+                font-weight: 600;
+                color: #1a5adf;
+                border-color: #1a5adf;
+            }
+
+                .pricing-section .btn-outline-primary:hover {
+                    background: #1a5adf;
+                    color: #fff;
+                }
+
+            .pricing-section .btn-primary {
+                border-radius: 60px;
+            }
+
+        /* ---- testimonials (full page) ---- */
+        .testimonial-card {
+            border: none;
+            border-radius: 28px;
+            background: white;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s;
+        }
+
+            .testimonial-card:hover {
+                box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+            }
+
+        /* ---- contact section ---- */
+        .contact-section {
+            padding: 0;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: stretch;
+            position: relative;
+            overflow: hidden;
+        }
+
+            /* Full background image */
+            .contact-section .bg-image-full {
+                position: absolute;
+                inset: 0;
+                background: url('assets/img/company_contact.png') no-repeat center/cover;
+                transform: scale(1.1);
+                transition: transform 0.5s ease;
+                width: 100%;
+                height: 100%;
+            }
+
+            .contact-section:hover .bg-image-full {
+                transform: scale(1);
+            }
+
+            .contact-section .overlay-dark {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg, rgba(11,30,51,0.85) 0%, rgba(26,47,68,0.7) 100%);
+                width: 100%;
+                height: 100%;
+            }
+
+        /* Left side - Content with contact info */
+        .contact-content-left {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+            color: white;
+        }
+
+            .contact-content-left .content-wrapper {
+                max-width: 420px;
+                width: 100%;
+                animation: fadeInUp 1s ease;
+                padding-right: 1rem;
+            }
+
+            .contact-content-left .icon-wrapper {
+                width: 80px;
+                height: 80px;
+                background: rgba(42, 109, 244, 0.2);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 2rem;
+                border: 2px solid rgba(42, 109, 244, 0.3);
+                transition: all 0.3s ease;
+            }
+
+                .contact-content-left .icon-wrapper:hover {
+                    background: rgba(42, 109, 244, 0.4);
+                    transform: rotate(-10deg) scale(1.05);
+                }
+
+                .contact-content-left .icon-wrapper i {
+                    font-size: 2.8rem;
+                    color: #2a6df4;
+                }
+
+            .contact-content-left h2 {
+                font-weight: 800;
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+                letter-spacing: -0.03em;
+                line-height: 1.2;
+            }
+
+            .contact-content-left .subtitle {
+                font-size: 1.2rem;
+                opacity: 0.85;
+                max-width: 400px;
+                line-height: 1.8;
+                margin-bottom: 2.5rem;
+            }
+
+            .contact-content-left .contact-info {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+                .contact-content-left .contact-info .info-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    padding: 0.8rem 1.2rem;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 12px;
+                    border: 1px solid rgba(255, 255, 255, 0.06);
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                }
+
+                    .contact-content-left .contact-info .info-item:hover {
+                        background: rgba(255, 255, 255, 0.1);
+                        transform: translateX(8px);
+                        border-color: rgba(42, 109, 244, 0.3);
+                    }
+
+                    .contact-content-left .contact-info .info-item i {
+                        font-size: 1.4rem;
+                        color: #2a6df4;
+                        width: 30px;
+                    }
+
+                    .contact-content-left .contact-info .info-item span {
+                        font-size: 1rem;
+                        opacity: 0.9;
+                    }
+
+        /* Right side - Floating card */
+        .contact-card-wrapper {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .contact-card {
+            max-width: 420px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.39);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 2.5rem 2.5rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 0.8s ease 0.2s both;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+        }
+
+            .contact-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+            }
+
+            .contact-card .form-header {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+                .contact-card .form-header .icon-circle {
+                    width: 70px;
+                    height: 70px;
+                    background: linear-gradient(135deg, #1a5adf, #2a6df4);
+                    border-radius: 50%;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.2rem;
+                    box-shadow: 0 8px 24px rgba(42, 109, 244, 0.3);
+                    transition: all 0.3s ease;
+                }
+
+                    .contact-card .form-header .icon-circle:hover {
+                        transform: scale(1.05) rotate(-5deg);
+                        box-shadow: 0 16px 32px rgba(42, 109, 244, 0.4);
+                    }
+
+                    .contact-card .form-header .icon-circle i {
+                        font-size: 2rem;
+                        color: white;
+                    }
+
+                .contact-card .form-header h2 {
+                    font-weight: 800;
+                    letter-spacing: -0.02em;
+                    color: #0b1e33;
+                    font-size: 2rem;
+                    margin-bottom: 0.25rem;
+                }
+
+                .contact-card .form-header p {
+                    color: #2e476b;
+                    font-size: 1rem;
+                }
+
+            /* ---- form elements ---- */
+            .contact-card .form-floating {
+                margin-bottom: 1rem;
+                position: relative;
+            }
+
+                .contact-card .form-floating .form-control {
+                    border-radius: 14px;
+                    border: 2px solid rgba(226, 232, 240, 0.6);
+                    padding: 1.1rem 1rem;
+                    font-size: 0.95rem;
+                    transition: all 0.3s ease;
+                    background: rgba(255, 255, 255, 0.7);
+                    backdrop-filter: blur(4px);
+                    height: auto;
+                    min-height: 58px;
+                }
+
+                    .contact-card .form-floating .form-control::placeholder {
+                        color: transparent;
+                    }
+
+                    .contact-card .form-floating .form-control:focus {
+                        border-color: #2a6df4;
+                        box-shadow: 0 0 0 4px rgba(42, 109, 244, 0.1);
+                        background: rgba(255, 255, 255, 0.9);
+                    }
+
+                    .contact-card .form-floating .form-control:hover {
+                        border-color: #94a3b8;
+                    }
+
+                .contact-card .form-floating label {
+                    padding: 1.1rem 1rem;
+                    color: #94a3b8;
+                    font-weight: 500;
+                    font-size: 0.9rem;
+                    transition: all 0.15s ease;
+                    pointer-events: none;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                }
+
+                /* LABEL DISAPPEARS WHEN INPUT IS FOCUSED */
+                .contact-card .form-floating .form-control:focus ~ label {
+                    opacity: 0;
+                }
+
+                /* LABEL DISAPPEARS WHEN INPUT HAS TEXT */
+                .contact-card .form-floating .form-control:not(:placeholder-shown) ~ label {
+                    opacity: 0;
+                }
+
+                /* LABEL VISIBLE ONLY WHEN EMPTY AND NOT FOCUSED */
+                .contact-card .form-floating .form-control:placeholder-shown:not(:focus) ~ label {
+                    opacity: 1;
+                }
+
+                .contact-card .form-floating textarea.form-control {
+                    min-height: 120px;
+                    padding-top: 1.2rem;
+                }
+
+                    .contact-card .form-floating textarea.form-control:focus ~ label {
+                        opacity: 0;
+                    }
+
+                    .contact-card .form-floating textarea.form-control:not(:placeholder-shown) ~ label {
+                        opacity: 0;
+                    }
+
+                    .contact-card .form-floating textarea.form-control:placeholder-shown:not(:focus) ~ label {
+                        opacity: 1;
+                    }
+
+            .contact-card .btn-submit {
+                width: 100%;
+                padding: 0.9rem;
+                border-radius: 14px;
+                font-weight: 700;
+                font-size: 1rem;
+                background: linear-gradient(135deg, #1a5adf, #2a6df4);
+                border: none;
+                color: white;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 24px rgba(42, 109, 244, 0.3);
+                position: relative;
+                overflow: hidden;
+            }
+
+                .contact-card .btn-submit:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 16px 40px rgba(42, 109, 244, 0.4);
+                }
+
+                .contact-card .btn-submit::after {
+                    content: '→';
+                    margin-left: 8px;
+                    transition: all 0.3s ease;
+                    display: inline-block;
+                }
+
+                .contact-card .btn-submit:hover::after {
+                    transform: translateX(6px);
+                }
+
+                .contact-card .btn-submit:active {
+                    transform: scale(0.98);
+                }
+
+        /* ---- animations ---- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---- responsive ---- */
+        @media (max-width: 992px) {
+            .contact-content-left {
+                min-height: auto;
+                padding: 3rem 2rem;
+                justify-content: center;
+                text-align: center;
+            }
+
+                .contact-content-left .content-wrapper {
+                    max-width: 100%;
+                    padding-right: 0;
+                }
+
+                .contact-content-left .subtitle {
+                    max-width: 100%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .contact-content-left .contact-info .info-item {
+                    justify-content: center;
+                }
+
+                .contact-content-left .icon-wrapper {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+            .contact-card-wrapper {
+                min-height: auto;
+                padding: 3rem 2rem;
+                justify-content: center;
+            }
+
+            .contact-card {
+                max-width: 500px;
+                padding: 2rem;
+                margin-left: 0;
+            }
+
+            .contact-content-left h2 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-content-left {
+                padding: 2rem 1.5rem;
+            }
+
+                .contact-content-left h2 {
+                    font-size: 2rem;
+                }
+
+                .contact-content-left .subtitle {
+                    font-size: 1rem;
+                }
+
+                .contact-content-left .contact-info .info-item {
+                    padding: 0.6rem 1rem;
+                    font-size: 0.9rem;
+                }
+
+            .contact-card-wrapper {
+                padding: 2rem 1rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+                border-radius: 24px;
+            }
+
+                .contact-card .form-header h2 {
+                    font-size: 1.5rem;
+                }
+
+                .contact-card .form-header .icon-circle {
+                    width: 60px;
+                    height: 60px;
+                }
+
+                    .contact-card .form-header .icon-circle i {
+                        font-size: 1.6rem;
+                    }
+        }
+
+        /* ---- footer ---- */
+        footer.bg-dark {
+            background: #0a1929 !important;
+            border-top: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .text-white-50 {
+            color: rgba(255,255,255,0.75) !important;
+        }
+
+        .text-secondary {
+            color: #475569 !important;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid rgba(0,0,0,0.02) !important;
+        }
+
+        .card .list-unstyled i {
+            margin-right: 0.4rem;
+        }
+
+        /* ---- responsive tweaks ---- */
+        @media (max-width: 576px) {
+            .header h1 {
+                font-size: 2.4rem;
+            }
+
+            .pricing-section .card-body {
+                padding: 1.5rem !important;
+            }
+
+            .full-page {
+                min-height: 100vh;
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .full-page {
+                min-height: auto;
+                padding: 5rem 0;
+            }
+
+            .header {
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container px-4">
+            <a class="navbar-brand" href="#!">
+                <img src="assets/img/company_logo.png" alt="Marlani Logo" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER — full page -->
+    <section class="header full-page" id="home">
+        <div class="container px-4">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-7">
+                    <div class="my-4">
+                        <h1 class="display-4 fw-bolder text-white mb-3">Build a digital presence that stands out.</h1>
+                        <p class="lead text-white-50 mb-4" style="max-width: 600px;">Custom websites, e‑commerce, and branding — designed to convert. Bootstrap powered, mobile first, and lightning fast.</p>
+                        <div class="d-grid gap-3 d-sm-flex">
+                            <a class="btn btn-primary btn-lg px-5" href="#pricing">Start now</a>
+                            <a class="btn btn-outline-light btn-lg px-5" href="#features">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES — full page -->
+    <section class="full-page border-bottom" id="features" style="background: #f8fafc;">
+        <div class="container px-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bolder" style="letter-spacing: -0.02em;">Why Marlani?</h2>
+                <p class="lead text-secondary">Beautiful, functional, and built to grow with you.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon mb-3"><i class="fas fa-palette"></i></div>
+                        <h3 class="h5 fw-bold">Unique design</h3>
+                        <p class="text-secondary">Custom layouts that reflect your brand identity. No templates — just originality.</p>
+                        <div class="img-placeholder mt-3">
+                            <i class="fas fa-paint-brush"></i> <span class="ms-2">design system</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon mb-3"><i class="fas fa-mobile-alt"></i></div>
+                        <h3 class="h5 fw-bold">Mobile-first</h3>
+                        <p class="text-secondary">Flawless on every screen. Responsive, fast, and accessible from day one.</p>
+                        <div class="img-placeholder mt-3">
+                            <i class="fas fa-mobile-alt"></i> <span class="ms-2">fully responsive</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon mb-3"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="h5 fw-bold">Performance</h3>
+                        <p class="text-secondary">Optimized for speed and SEO. Your users and Google will thank you.</p>
+                        <div class="img-placeholder mt-3">
+                            <i class="fas fa-tachometer-alt"></i> <span class="ms-2">lightning fast</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING — full page -->
+    <section class="pricing-section full-page" id="pricing">
+        <div class="container px-4">
+            <div class="text-center mb-5 text-white">
+                <h2 class="fw-bolder" style="letter-spacing: -0.02em;">Simple, transparent pricing</h2>
+                <p class="lead text-white-50">Choose the plan that fits your business.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- starter -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <div class="small text-uppercase fw-bold text-primary">Starter</div>
+                            <div class="my-3">
+                                <span class="display-4 fw-bold">R900</span>
+                                <span class="text-muted">/ mo</span>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> 1-3 Pages</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> Mobile Responsive</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> Contact Form</li>
+                                <li class="mb-2 text-secondary"><i class="fas fa-times-circle text-secondary"></i> Google Maps</li>
+                                <li class="mb-2 text-secondary"><i class="fas fa-times-circle text-secondary"></i> Dedicated support</li>
+                                <li class="mb-2 text-secondary"><i class="fas fa-times-circle text-secondary"></i> WhatsApp Integration</li>
+                            </ul>
+                            <div class="d-grid"><a class="btn btn-primary" href="#!">Choose plan</a></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- business (popular) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border border-primary border-2" style="transform: scale(1.02);">
+                        <div class="card-body p-4">
+                            <span class="badge bg-primary text-white rounded-pill px-3 py-2 mb-2" style="font-weight: 500;">Most popular</span>
+                            <div class="small text-uppercase fw-bold text-muted">Business</div>
+                            <div class="my-3">
+                                <span class="display-4 fw-bold">R1500</span>
+                                <span class="text-muted">/ mo</span>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> <strong>Up to 10 Pages</strong></li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> Mobile Responsive</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> Google Maps</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> Dedicated support</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> WhatsApp Integration</li>
+                            </ul>
+                            <div class="d-grid"><a class="btn btn-outline-primary" href="#!">Choose plan</a></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ecommerce -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <div class="small text-uppercase fw-bold text-muted">E‑Commerce</div>
+                            <div class="my-3">
+                                <span class="display-4 fw-bold">R2000</span>
+                                <span class="text-muted">/ mo</span>
+                            </div>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> <strong>Online Store</strong></li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> Custom Design</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> Payment Gateway</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> Product Management</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> 24/7 Support</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary"></i> Dashboard & Analytics</li>
+                            </ul>
+                            <div class="d-grid"><a class="btn btn-outline-primary" href="#!">Choose plan</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS — full page -->
+    <section class="full-page border-bottom" id="testimonials" style="background: #f8fafc;">
+        <div class="container px-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bolder" style="letter-spacing: -0.02em;">Real stories from real clients</h2>
+                <p class="lead text-secondary">We partner with businesses to create impact.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Testimonial 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card card p-4 h-100">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="fas fa-quote-right text-primary fs-1"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1">"Marlani redesigned our entire online presence. Our conversion rate increased by 40% within two months. Incredible team."</p>
+                                <div class="small text-muted mt-2">— Cape Town</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card card p-4 h-100">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="fas fa-quote-right text-primary fs-1"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1">"From start to finish, they delivered beyond our expectations. The e‑commerce platform runs smoothly and looks stunning."</p>
+                                <div class="small text-muted mt-2">— Johannesburg</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card card p-4 h-100">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="fas fa-quote-right text-primary fs-1"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1">"Working with Marlani was a game-changer for our startup. They understood our vision and delivered a stunning website that our customers love."</p>
+                                <div class="small text-muted mt-2">— Durban</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT — full page -->
+    <section class="contact-section" id="contact">
+        <!-- Full background image -->
+        <div class="bg-image-full"></div>
+        <div class="overlay-dark"></div>
+
+        <div class="container-fluid position-relative" style="z-index: 2;">
+            <div class="row">
+                <!-- Left side - Contact Info -->
+                <div class="col-lg-6 contact-content-left">
+                    <div class="content-wrapper">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h2>Building something<br>amazing together</h2>
+                        <p class="subtitle">We're here to help you grow your business online. Reach out and let's start the conversation.</p>
+                        <div class="contact-info">
+                            <div class="info-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>marlani.techn@gmail.com</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+27 63 642 1643</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Gauteng, South Africa</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side - Floating Card -->
+                <div class="col-lg-6 contact-card-wrapper">
+                    <div class="contact-card">
+                        <div class="form-header">
+                            <div class="icon-circle">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h2>Get in touch</h2>
+                            <p>We'd love to hear from you</p>
+                        </div>
+
+                        <form id="contactForm" action="https://formsubmit.co/marlani.techn@gmail.com" method="POST">
+                            <input type="hidden" name="_next" value="https://yourwebsite.com/contact?success=true">
+                            <input type="hidden" name="_captcha" value="true">
+
+                            <div class="form-floating">
+                                <input class="form-control" id="name" type="text" name="name" placeholder=" " required />
+                                <label for="name">Full name</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="email" type="email" name="email" placeholder=" " required />
+                                <label for="email">Email address</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="phone" type="tel" name="phone" placeholder=" " required />
+                                <label for="phone">Phone number</label>
+                            </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" id="message" name="message" placeholder=" " style="height: 120px" required></textarea>
+                                <label for="message">Message</label>
+                            </div>
+                            <button class="btn-submit" type="submit">Send message</button>
+                        </form>
+
+                        <div id="success" style="display: none; text-align: center; padding: 2rem; background: #d4edda; border-radius: 12px; color: #155724; margin-top: 1rem;">
+                            <i class="fas fa-check-circle" style="font-size: 2rem;"></i>
+                            <h4>Thank you!</h4>
+                            <p>Your message has been sent. We'll get back to you within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark">
+        <div class="container px-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="m-0 text-white-50 small">© 2026 Marlani · All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <span class="text-white-50 small">
+                        <i class="fab fa-instagram me-2"></i>
+                        <i class="fab fa-twitter me-2"></i>
+                        <i class="fab fa-linkedin-in"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // SUCCESS MESSAGE CHECK - Runs when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                const form = document.querySelector('form[action^="https://formsubmit.co"]');
+                const successDiv = document.getElementById('success');
+                if (form) form.style.display = 'none';
+                if (successDiv) successDiv.style.display = 'block';
+
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+
+                // Scroll to contact section
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    setTimeout(function () {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                }
+            }
+        });
+
+        // FORM SUBMIT - Shows loading state
+        document.querySelector('form[action^="https://formsubmit.co"]')?.addEventListener('submit', function (e) {
+            const button = this.querySelector('.btn-submit');
+            button.innerHTML = '<i class="fas fa-hourglass-half"></i> Sending...';
+            button.disabled = true;
+        });
+    </script>
+</body>
+</html>
